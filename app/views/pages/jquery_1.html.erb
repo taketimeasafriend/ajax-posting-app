@@ -1,0 +1,17 @@
+<p>
+  <a id="my-click">Click Me</a>
+</p>
+
+<div id="foo" style="border: 1px solid red;">
+  <p>bar</p>
+</div>
+
+<script>
+  $("#my-click").click(function(){
+    $("#foo").html('<h1>zoo</h1>');
+    $("#foo").prepend('<h2>prepend</h2>');
+    $("#foo").append('<h2>append</h2>');
+    $("#foo").before('<h3>before</h3>');
+    $("#foo").after('<h3>after</h3>');
+  })
+</script>
