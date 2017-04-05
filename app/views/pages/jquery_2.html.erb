@@ -1,0 +1,49 @@
+<p>
+  <a id="my-open-click">Open</a>
+</p>
+<div id="foo" style="border: 1px solid red;">
+  <a id="my-hide-click">Hide</a>
+  <p>bar</p>
+</div>
+
+<p>
+  <a id="my-open-click1">Open1</a>
+</p>
+<div id="foo1" style="border: 1px solid red;">
+  <a id="my-hide-click1">Hide1</a>
+  <p>bar</p>
+</div>
+
+<p>
+  <a id="my-open-click2">Open2</a>
+</p>
+<div id="foo2" style="border: 1px solid red;">
+  <a id="my-hide-click2">Hide2</a>
+  <p>bar</p>
+</div>
+
+<script>
+  $("#foo").hide();
+  $("#my-open-click").click(function(){
+    $("#foo").show();
+  })
+  $("#my-hide-click").click(function(){
+    $("#foo").hide();
+  })
+
+  $("#foo1").fadeOut();
+  $("#my-open-click1").click(function(){
+    $("#foo1").fadeIn();
+  })
+  $("#my-hide-click1").click(function(){
+    $("#foo1").fadeOut();
+  })
+
+  $("#foo2").slideUp();
+  $("#my-open-click2").click(function(){
+    $("#foo2").slideDown();
+  })
+  $("#my-hide-click2").click(function(){
+    $("#foo2").slideUp();
+  })
+</script>
