@@ -27,19 +27,30 @@ class PostsController < ApplicationController
       unless @post.find_like(current_user)  # 如果已经按讚过了，就略过不再新增
         Like.create( :user => current_user, :post => @post)
       end
-
       #redirect_to posts_path
     end
-
     def unlike
       @post = Post.find(params[:id])
       like = @post.find_like(current_user)
       like.destroy
-
       #redirect_to posts_path
       render "like"
     end
 
+    def favorite
+      @post = Post.find(params[:id])
+      unless @post.find_favorite(current_user)  # 如果已经收藏过了，就略过不再新增
+        Favorite.create( :user => current_user, :post => @post)
+      end
+      #redirect_to posts_path
+    end
+    def unfavorite
+      @post = Post.find(params[:id])
+      favorite = @post.find_favorite(current_user)
+      favorite.destroy
+      #redirect_to posts_path
+      render "favorite"
+    end
 
 
   protected

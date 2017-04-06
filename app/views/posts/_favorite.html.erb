@@ -1,0 +1,11 @@
+<% if post.favorited_users.any? #显示谁收藏了 %>
+  <%= post.favorited_users.map{ |u| u.display_name }.join(",") %> 收藏了此帖
+<% end %>
+
+<% if current_user #有登入才可以按讚 %>
+  <% if post.find_favorite(current_user) %>
+    <%= link_to "❤️", unfavorite_post_path(post), :method => :post, :remote => true, :class => "btn btn-primary" %>
+  <% else %>
+    <%= link_to "🖤", favorite_post_path(post), :method => :post, :remote => true, :class => "btn btn-primary" %>
+  <% end %>
+<% end %>
