@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :posts
-
   devise_for :users
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     get '/jquery-1' => 'pages#jquery_1'
@@ -11,4 +9,12 @@ Rails.application.routes.draw do
     get '/jquery-5' => 'pages#jquery_5'
 
     root 'posts#index'
+
+    resources :posts do
+      member do
+        post "like" => "posts#like"
+        post "unlike" => "posts#unlike"
+      end
+    end
+
 end
